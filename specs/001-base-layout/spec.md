@@ -87,4 +87,4 @@ Site editors can rely on the base layout to load shared CSS and script bundles w
 
 - Home and About pages already exist and are published within the site navigation.
 - Social profile URLs (Gmail mailto, LinkedIn profile, Twitter profile, GitHub profile) will be supplied or verified before implementation.
-- Shared asset bundles follow existing build tooling, so this feature focuses on wiring them into the base layout rather than authoring new styles or scripts.
+- This feature establishes the Tailwind/PostCSS asset pipeline (npm scripts, configuration files) and then wires those shared bundles into the base layout rather than authoring new styles or scripts.

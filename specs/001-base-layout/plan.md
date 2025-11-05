@@ -5,7 +5,7 @@
 
 ## Summary
 
-Introduce a reusable Hugo base layout that wires shared head assets, a fixed site header, and a consistent footer. Header and footer move into dedicated partials styled with Tailwind, and the base template exposes slots for page-level CSS and scripts.
+Introduce a reusable Hugo base layout that wires shared head assets, a fixed site header, and a consistent footer. Header and footer move into dedicated partials styled with Tailwind, the base template exposes slots for page-level CSS and scripts, and the work begins by standing up the Tailwind/PostCSS toolchain the site currently lacks.
 
 ## Technical Context
 
@@ -15,6 +15,7 @@ Introduce a reusable Hugo base layout that wires shared head assets, a fixed sit
 **Reusable Components**: Hugo partials under `layouts/partials/` and `_default/baseof.html` with `block` regions  
 **Assets Pipeline**: Hugo Pipes with PostCSS (Tailwind + Autoprefixer) emitting `/assets/css/tailwind.css` > `resources/_gen/` > `static/`  
 **Testing & Verification**: `npm run build` (Tailwind compile) + `hugo --environment production --minify`, manual responsive audit, Lighthouse + axe accessibility scan  
+**Build Tooling**: Introduce Node.js-based Tailwind/PostCSS pipeline (package.json, PostCSS config, npm scripts) to compile shared styles for Hugo.
 **Deployment Target**: Existing static hosting pipeline (no changes required)  
 **Constraints**: Preserve simple navigation, mobile-first responsiveness, and green performance/accessibility budgets
 
