@@ -14,7 +14,7 @@
 3. Visit `http://localhost:1313` and confirm the fixed header and footer render on Home and About pages.
 
 ## Verification Checklist
-- Resize the browser to 360px, 768px, 1024px, and 1440px to verify header/footer responsiveness.
+- Resize the browser to 360px, 768px, 1024px, and 1440px to verify header/footer responsiveness, and capture notes or screenshots in `specs/001-base-layout/artifacts/responsive-check.md`.
 - Scroll through long content and ensure the fixed header never overlaps the first heading.
 - Click each footer link (Gmail, LinkedIn, Twitter, GitHub) and confirm they open in new tabs with correct destinations.
 - Run a Lighthouse performance and accessibility audit; both categories should remain "green".

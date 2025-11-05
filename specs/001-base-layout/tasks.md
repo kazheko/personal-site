@@ -114,6 +114,7 @@ user stories independent and reference constitution principles where relevant.
 - [ ] T021 Run Lighthouse (performance, accessibility) and axe scans from repository root; archive findings in `specs/001-base-layout/artifacts/audit-report.md`.
 - [ ] T022 Review Tailwind config and purge settings in `tailwind.config.js` to ensure unused utilities are removed before deployment.
 - [ ] T023 Update project documentation in `AGENTS.md` or root README (if present) summarizing header/footer usage and verification results.
+- [ ] T024 Run manual responsive QA across 360px/768px/1024px/1440px viewports via `hugo server -D`; log findings in `specs/001-base-layout/artifacts/responsive-check.md`.
 
 ---
 
@@ -178,3 +179,5 @@ user stories independent and reference constitution principles where relevant.
 - Ensure Tailwind utility usage remains purposeful; remove dead CSS before completion.
 - Capture audit artifacts (screenshots, reports) when stories modify UX or performance.
 - Stop after each story to confirm the site remains simple, responsive, and performant.
+
+
