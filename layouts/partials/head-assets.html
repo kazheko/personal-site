@@ -1,0 +1,23 @@
+{{- /* Shared head include with Tailwind pipeline and page-level CSS hook */ -}}
+{{- $pageTitle := site.Title -}}
+{{- with .Title -}}
+  {{- $pageTitle = printf "%s | %s" . site.Title -}}
+{{- end -}}
+{{- $postcssOpts := dict "config" "postcss.config.js" -}}
+{{- $css := resources.Get "css/tailwind.css" | css.PostCSS $postcssOpts -}}
+{{- if hugo.IsProduction -}}
+  {{- $css = $css | minify | resources.Fingerprint "sha256" -}}
+{{- end -}}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ $pageTitle }}</title>
+  {{- with site.Params.meta.description -}}
+    <meta name="description" content="{{ . }}">
+  {{- end -}}
+  {{- if eq (hugo.Environment) "development" -}}
+    <meta name="robots" content="noindex, nofollow">
+  {{- end -}}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $css.Data.Integrity }}"{{ end }}>
+  {{ block "page_css" . }}{{ end }}
+</head>

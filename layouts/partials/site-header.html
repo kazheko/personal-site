@@ -1,0 +1,35 @@
+{{- $page := . -}}
+{{- $logo := site.Params.logo_text | default "Yauheni Kazheka" -}}
+{{- $menu := slice -}}
+{{- if site.Menus.main -}}
+  {{- range site.Menus.main -}}
+    {{- $menu = $menu | append (dict "label" .Name "url" (.URL | relURL) "active" ($page.IsMenuCurrent "main" .)) -}}
+  {{- end -}}
+{{- else -}}
+  {{- $homeURL := "/" -}}
+  {{- with site.Home -}}
+    {{- $homeURL = .RelPermalink -}}
+  {{- end -}}
+  {{- $menu = slice
+        (dict "label" "Home" "url" $homeURL "active" $page.IsHome)
+        (dict "label" "About" "url" "/about/" "active" (eq ($page.RelPermalink | default "") "/about/"))
+    -}}
+{{- end -}}
+<header class="fixed inset-x-0 top-0 z-50 bg-brand-surface/95 text-brand-text shadow-header backdrop-blur supports-[backdrop-filter]:bg-brand-surface/80">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-3 sm:flex-nowrap">
+    <a class="text-lg font-semibold tracking-tight text-brand-text hover:text-brand-text/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface" href="{{ site.Home.RelPermalink | default "/" }}">
+      {{ $logo }}
+    </a>
+    <nav aria-label="Primary" class="w-full sm:w-auto">
+      <ul class="flex flex-wrap items-center justify-start gap-4 text-sm font-medium sm:justify-end">
+        {{- range $menu -}}
+          <li>
+            <a href="{{ .url }}" class="inline-flex items-center gap-1 rounded-md px-2 py-1 transition-colors duration-150 {{ if .active }}text-brand-accent{{ else }}text-brand-text/80 hover:text-brand-text{{ end }} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
+              {{ .label }}
+            </a>
+          </li>
+        {{- end -}}
+      </ul>
+    </nav>
+  </div>
+</header>

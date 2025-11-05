@@ -1,0 +1,10 @@
+{{- /* Shared script include with optional global bundle and page-level slot */ -}}
+{{- $globalScript := resources.GetMatch "js/main.js" -}}
+{{- if $globalScript -}}
+  {{- $built := $globalScript | js.Build (dict "format" "iife" "target" "es2017" "minify" false) -}}
+  {{- if hugo.IsProduction -}}
+    {{- $built = $built | minify | resources.Fingerprint "sha256" -}}
+  {{- end -}}
+  <script src="{{ $built.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $built.Data.Integrity }}"{{ end }} defer></script>
+{{- end -}}
+{{ block "page_scripts" . }}{{ end }}

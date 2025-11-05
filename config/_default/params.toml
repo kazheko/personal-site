@@ -1,0 +1,27 @@
+logo_text = "Yauheni Kazheka"
+
+[meta]
+description = "Personal site of Yauheni Kazheka featuring projects and writing."
+
+[footer]
+owner = "Yauheni Kazheka"
+
+[social.gmail]
+label = "Email"
+url = "mailto:ykazheka@gmail.com"
+aria_label = "Email Yauheni Kazheka"
+
+[social.linkedin]
+label = "LinkedIn"
+url = "https://www.linkedin.com/in/yauheni-kazheka/"
+aria_label = "View Yauheni Kazheka on LinkedIn"
+
+[social.twitter]
+label = "Twitter"
+url = "https://twitter.com/ykazheka"
+aria_label = "Follow Yauheni Kazheka on Twitter"
+
+[social.github]
+label = "GitHub"
+url = "https://github.com/ykazheka"
+aria_label = "Browse Yauheni Kazheka on GitHub"
