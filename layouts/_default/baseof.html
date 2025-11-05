@@ -1,0 +1,18 @@
+{{- /* Base layout shell with header, main, footer, and asset slots */ -}}
+<!DOCTYPE html>
+<html lang="{{ with site.Language.Lang }}{{ . }}{{ else }}en{{ end }}">
+  {{ partial "head-assets.html" . }}
+  <body class="min-h-screen bg-canvas-base text-slate-900 flex flex-col">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    {{ partial "site-header.html" . }}
+    <main id="main-content" class="flex-1 header-space">
+      {{ block "main" . }}
+        <div class="mx-auto w-full max-w-4xl px-4 pb-12">
+          {{ .Content }}
+        </div>
+      {{ end }}
+    </main>
+    {{ partial "site-footer.html" . }}
+    {{ partial "foot-scripts.html" . }}
+  </body>
+</html>
