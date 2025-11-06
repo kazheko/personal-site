@@ -25,6 +25,24 @@
   .skip-link {
     @apply sr-only focus:not-sr-only fixed top-3 left-3 z-50 rounded bg-brand-surface px-4 py-2 text-sm font-medium text-brand-text shadow-lg;
   }
+
+  /* Mobile menu dropdown visibility - only on small screens */
+  @media (max-width: 639px) {
+    [data-mobile-menu][data-state="closed"] {
+      @apply hidden;
+    }
+
+    [data-mobile-menu][data-state="open"] {
+      @apply block;
+    }
+  }
+
+  /* Desktop menu always visible */
+  @media (min-width: 640px) {
+    [data-mobile-menu] {
+      @apply block;
+    }
+  }
 }
 
 @layer utilities {

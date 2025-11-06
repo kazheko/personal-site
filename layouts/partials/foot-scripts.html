@@ -1,10 +1,19 @@
 {{- /* Shared script include with optional global bundle and page-level slot */ -}}
 {{- $globalScript := resources.GetMatch "js/main.js" -}}
 {{- if $globalScript -}}
-  {{- $built := $globalScript | js.Build (dict "format" "iife" "target" "es2017" "minify" false) -}}
+  {{- $built := $globalScript | js.Build (dict "format" "iife" "target" "es2017" "bundle" true "minify" false) -}}
   {{- if hugo.IsProduction -}}
     {{- $built = $built | minify | resources.Fingerprint "sha256" -}}
   {{- end -}}
   <script src="{{ $built.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $built.Data.Integrity }}"{{ end }} defer></script>
+{{- end -}}
+
+{{- $mobileMenu := resources.GetMatch "js/mobile-menu.js" -}}
+{{- if $mobileMenu -}}
+  {{- $mobileBuilt := $mobileMenu | js.Build (dict "format" "esm" "target" "es2017" "minify" false) -}}
+  {{- if hugo.IsProduction -}}
+    {{- $mobileBuilt = $mobileBuilt | minify | resources.Fingerprint "sha256" -}}
+  {{- end -}}
+  <script type="module" src="{{ $mobileBuilt.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $mobileBuilt.Data.Integrity }}"{{ end }}></script>
 {{- end -}}
 {{ block "page_scripts" . }}{{ end }}
