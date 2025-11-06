@@ -12,6 +12,23 @@ Follow-up TODOs: None
 -->
 # Personal Site Constitution
 
+## Spec-Kit Integration
+
+We operate inside GitHub Spec-Kit and follow a Spec-Driven Development cadence. Every constitution update must respect the upstream spec (feature definitions), downstream plans, and task queues. Use the constitution to inform gating checks across speckit workflows before implementation work begins.
+
+### Command Interpretation
+
+speckit commands map directly to prompts in `.codex/prompts/` and workflow templates under `.specify/`:
+
+- `speckit.constitution` -> use this document to regenerate `.specify/memory/constitution.md` and sync artifacts.
+- `speckit.analyze` -> gather repo signals and readiness data before spec authoring.
+- `speckit.specify` -> create or amend feature specs from templates.
+- `speckit.plan` -> build implementation plans, ensuring Constitution Check gates remain satisfied.
+- `speckit.tasks` -> derive task backlogs from the latest spec and plan alignment.
+- `speckit.checklist` or other commands -> inspect the matching prompt and associated template to understand the expected deliverable and default to Spec-Kit conventions if unclear.
+
+When encountering a `speckit.<name>` instruction, locate the corresponding prompt file and follow its flow. If the command references a new name, check `.specify/templates/commands/` for additional guidance or derive behavior from existing Spec-Kit patterns (analyze -> specify -> plan -> tasks -> implement).
+
 ## Core Principles
 
 ### I. Hugo-Driven Architecture
@@ -50,4 +67,4 @@ The site MUST ship as static assets optimized for speed and inclusive access. Im
 - Versioning follows semantic rules: major for breaking removals, minor for new principles or sections, patch for clarifications.
 - Compliance is reviewed quarterly via a walkthrough of key pages, ensuring Hugo and Tailwind usage, UX simplicity, responsive behavior, and accessibility budgets remain intact.
 
-**Version**: 1.0.0 | **Ratified**: 2025-11-04 | **Last Amended**: 2025-11-04
+**Version**: 1.1.0 | **Ratified**: 2025-11-04 | **Last Amended**: 2025-11-04
