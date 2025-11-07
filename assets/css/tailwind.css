@@ -43,6 +43,94 @@
       @apply block;
     }
   }
+
+  .list-layout {
+    @apply flex flex-col gap-10 md:grid md:grid-cols-[minmax(0,_3fr)_minmax(0,_1.2fr)] md:items-start;
+  }
+
+  .list-posts {
+    @apply flex flex-col gap-6;
+  }
+
+  .post-card {
+    @apply rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm shadow-slate-900/5 backdrop-blur;
+  }
+
+  .post-card__header {
+    @apply mb-2 space-y-1;
+  }
+
+  .post-card__date {
+    @apply text-xs uppercase tracking-wide text-slate-500;
+  }
+
+  .post-card__title {
+    @apply text-xl font-semibold text-slate-900;
+  }
+
+  .post-card__title-link {
+    @apply transition-colors duration-150 hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+  }
+
+  .post-card__tags {
+    @apply text-sm font-medium text-slate-600;
+  }
+
+  .post-card__tags--empty {
+    @apply text-slate-400;
+  }
+
+  .post-card__excerpt {
+    @apply mt-4 text-base leading-relaxed text-slate-700;
+  }
+
+  .list-empty {
+    @apply rounded-xl border border-dashed border-slate-300 bg-slate-50/80 p-6 text-center text-slate-600;
+  }
+
+  .list-sidebar {
+    @apply space-y-10 rounded-2xl border border-slate-100 bg-white/70 p-6 shadow-sm shadow-slate-900/5 backdrop-blur;
+  }
+
+  .list-sidebar__section {
+    @apply space-y-3;
+  }
+
+  .list-sidebar__heading {
+    @apply text-sm font-semibold uppercase tracking-wide text-slate-500;
+  }
+
+  .list-sidebar__figure {
+    @apply flex flex-col items-center gap-3 text-center;
+  }
+
+  .list-sidebar__photo {
+    @apply h-32 w-32 rounded-full border border-slate-200 object-cover shadow-sm;
+  }
+
+  .list-sidebar__name {
+    @apply text-base font-semibold text-slate-800;
+  }
+
+  .list-sidebar__bio {
+    @apply text-sm leading-relaxed text-slate-600;
+  }
+
+  .tag-directory {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .tag-directory__item {
+    @apply inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-sm font-medium text-slate-700 transition-colors duration-150 hover:border-brand-accent hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+  }
+
+  .tag-directory__count {
+    @apply text-xs font-semibold text-slate-400;
+  }
+
+  .tag-directory__empty {
+    @apply text-sm text-slate-500;
+  }
 }
 
 @layer utilities {

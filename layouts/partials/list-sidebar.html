@@ -1,0 +1,42 @@
+{{- $author := .Author -}}
+{{- $tags := .Tags -}}
+<aside class="list-sidebar" aria-label="About the author and available tags">
+  {{- with $author -}}
+    {{- $photoAlt := .photo_alt | default (printf "Portrait of %s" (.name | default site.Title)) -}}
+    <section class="list-sidebar__section">
+      <h2 class="list-sidebar__heading">About</h2>
+      {{- with .photo -}}
+        {{- with resources.Get . -}}
+          {{- $processed := .Fit "400x400" -}}
+          <figure class="list-sidebar__figure">
+            <img src="{{ $processed.RelPermalink }}" alt="{{ $photoAlt }}" class="list-sidebar__photo" loading="lazy" decoding="async">
+            <figcaption class="list-sidebar__name">{{ $author.name | default site.Title }}</figcaption>
+          </figure>
+        {{- else -}}
+          <p class="list-sidebar__name">{{ $author.name | default site.Title }}</p>
+        {{- end -}}
+      {{- else -}}
+        <p class="list-sidebar__name">{{ $author.name | default site.Title }}</p>
+      {{- end -}}
+      {{- with .bio -}}
+        <p class="list-sidebar__bio">{{ . }}</p>
+      {{- end -}}
+    </section>
+  {{- end -}}
+  <section class="list-sidebar__section" aria-live="polite">
+    <h2 class="list-sidebar__heading">Browse Tags</h2>
+    <div class="tag-directory" data-tag-directory>
+      {{- if and $tags (gt (len $tags) 0) -}}
+        {{- range $tagName, $tagPages := sort $tags -}}
+          {{- $tagURL := printf "/tags/%s/" ($tagName | urlize) | relLangURL -}}
+          <a class="tag-directory__item" href="{{ $tagURL }}">
+            <span>{{ $tagName }}</span>
+            <span class="tag-directory__count">{{ len $tagPages }}</span>
+          </a>
+        {{- end -}}
+      {{- else -}}
+        <p class="tag-directory__empty">No tags published yet.</p>
+      {{- end -}}
+    </div>
+  </section>
+</aside>

@@ -1,7 +1,44 @@
 
 {{ define "main" }}
-
-<p>list template</p>
-
-{{ end}}
+  {{- $posts := .RegularPages -}}
+  {{- $author := site.Params.author | default (dict) -}}
+  {{- $tags := site.Taxonomies.tags | default dict -}}
+  <section class="mx-auto w-full max-w-6xl px-4 pb-16">
+    <div class="list-layout">
+      <div class="list-posts">
+        {{- if gt (len $posts) 0 -}}
+          {{- range $posts -}}
+            {{- $tagsForPost := .Params.tags | default slice -}}
+            {{- $date := .Date | time.Format "Jan 2, 2006" -}}
+            {{- $excerpt := .Summary -}}
+            {{- if not $excerpt -}}
+              {{- $excerpt = (.Plain | truncate 220) -}}
+            {{- end -}}
+            <article class="post-card">
+              <header class="post-card__header">
+                <p class="post-card__date">{{ $date }}</p>
+                <h2 class="post-card__title">
+                  <a href="{{ .RelPermalink }}" class="post-card__title-link">
+                    {{ .Title }}
+                  </a>
+                </h2>
+              </header>
+              <p class="post-card__tags">
+                {{- if gt (len $tagsForPost) 0 -}}
+                  {{- delimit $tagsForPost ", " -}}
+                {{- else -}}
+                  <span class="post-card__tags--empty">No tags</span>
+                {{- end -}}
+              </p>
+              <p class="post-card__excerpt">{{ $excerpt | plainify }}</p>
+            </article>
+          {{- end -}}
+        {{- else -}}
+          <p class="list-empty">No posts published yet. Check back soon.</p>
+        {{- end -}}
+      </div>
+      {{- partial "list-sidebar.html" (dict "Page" . "Author" $author "Tags" $tags) -}}
+    </div>
+  </section>
+{{ end }}
 

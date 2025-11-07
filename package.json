@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "hugo server -D --disableFastRender",
-    "build": "hugo --environment production --minify"
+    "dev": "node tools/hugo/run-hugo.js server -D --disableFastRender",
+    "build": "node tools/hugo/run-hugo.js --environment production --minify"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

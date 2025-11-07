@@ -25,3 +25,9 @@ aria_label = "Follow Yauheni Kazheka on Twitter"
 label = "GitHub"
 url = "https://github.com/ykazheka"
 aria_label = "Browse Yauheni Kazheka on GitHub"
+
+[author]
+name = "Yauheni Kazheka"
+bio = "Pragmatic frontend engineer who ships performant static experiences with Hugo and Tailwind."
+photo = "images/author.jpg"
+photo_alt = "Portrait of Yauheni Kazheka"
