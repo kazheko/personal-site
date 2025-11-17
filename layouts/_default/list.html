@@ -1,11 +1,8 @@
 
 {{ define "main" }}
-  {{- $paginator := .Scratch.Get "listPaginator" -}}
-  {{- if not $paginator -}}
-    {{- $paginator = .Paginate (.RegularPages) -}}
-    {{- .Scratch.Set "listPaginator" $paginator -}}
-  {{- end -}}
-  {{- $totalPosts := .Scratch.Get "listTotalPosts" | default (len (.RegularPages)) -}}
+  {{- $pages := .RegularPages -}}
+  {{- $paginator := .Paginate $pages -}}
+  {{- $totalPosts := len .RegularPages -}}
   {{- $posts := $paginator.Pages -}}
   {{- $author := site.Params.author | default (dict) -}}
   {{- $tags := site.Taxonomies.tags | default dict -}}
