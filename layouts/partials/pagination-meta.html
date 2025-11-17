@@ -1,0 +1,20 @@
+{{- $paginator := or (.Scratch.Get "listPaginator") (.Paginator) -}}
+{{- if or (not $paginator) (le $paginator.TotalPages 1) -}}
+  {{- return -}}
+{{- end -}}
+{{- $relPrev := "" -}}
+{{- if $paginator.HasPrev -}}
+  {{- $relPrev = $paginator.Prev.URL -}}
+{{- end -}}
+{{- $relNext := "" -}}
+{{- if $paginator.HasNext -}}
+  {{- $relNext = $paginator.Next.URL -}}
+{{- end -}}
+{{- $canonical := $paginator.First.URL | default .Permalink -}}
+<link rel="canonical" href="{{ $canonical }}">
+{{- with $relPrev -}}
+  <link rel="prev" href="{{ . }}">
+{{- end -}}
+{{- with $relNext -}}
+  <link rel="next" href="{{ . }}">
+{{- end -}}

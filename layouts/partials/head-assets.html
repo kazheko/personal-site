@@ -4,7 +4,7 @@
   {{- $pageTitle = printf "%s | %s" . site.Title -}}
 {{- end -}}
 {{- $postcssOpts := dict "config" "postcss.config.js" -}}
-{{- $css := resources.Get "css/tailwind.css" | css.PostCSS $postcssOpts -}}
+{{- $css := resources.Get "css/tailwind.css" | postCSS $postcssOpts -}}
 {{- if hugo.IsProduction -}}
   {{- $css = $css | minify | resources.Fingerprint "sha256" -}}
 {{- end -}}
@@ -19,5 +19,6 @@
     <meta name="robots" content="noindex, nofollow">
   {{- end -}}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $css.Data.Integrity }}"{{ end }}>
+  {{ partial "pagination-meta.html" . }}
   {{ block "page_css" . }}{{ end }}
 </head>

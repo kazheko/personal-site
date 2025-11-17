@@ -131,6 +131,18 @@
   .tag-directory__empty {
     @apply text-sm text-slate-500;
   }
+
+  .pagination-button {
+    @apply inline-flex min-h-[44px] items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors duration-150 hover:border-brand-accent hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+  }
+
+  .pagination-button.is-active {
+    @apply border-slate-900 bg-slate-900 text-white hover:border-slate-900 hover:text-white;
+  }
+
+  .pagination-button.is-disabled {
+    @apply cursor-not-allowed border-slate-200 bg-slate-100 text-slate-400 hover:border-slate-200 hover:text-slate-400;
+  }
 }
 
 @layer utilities {

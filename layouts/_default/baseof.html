@@ -1,4 +1,10 @@
 {{- /* Base layout shell with header, main, footer, and asset slots */ -}}
+{{- if and .IsNode (eq .Layout "list") -}}
+  {{- $regular := .RegularPages -}}
+  {{- $paginator := .Paginate $regular -}}
+  {{- .Scratch.Set "listPaginator" $paginator -}}
+  {{- .Scratch.Set "listTotalPosts" (len $regular) -}}
+{{- end -}}
 <!DOCTYPE html>
 <html lang="{{ with site.Language.Lang }}{{ . }}{{ else }}en{{ end }}">
   {{ partial "head-assets.html" . }}

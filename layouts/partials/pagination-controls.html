@@ -1,0 +1,50 @@
+{{- $paginator := .Paginator -}}
+{{- if or (not $paginator) (le $paginator.TotalPages 1) -}}
+  {{- return -}}
+{{- end -}}
+{{- $current := $paginator.PageNumber -}}
+{{- $total := $paginator.TotalPages -}}
+{{- $totalPosts := .TotalPosts | default 0 -}}
+{{- $pageSize := $paginator.PagerSize -}}
+{{- $currentCount := len $paginator.Pages -}}
+{{- $rangeStart := add (mul (sub $current 1) $pageSize) 1 -}}
+{{- $countOffset := math.Max (sub $currentCount 1) 0 -}}
+{{- $rangeEndScratch := newScratch -}}
+{{- $rangeEndScratch.Set "value" (add $rangeStart $countOffset) -}}
+{{- if and (gt $totalPosts 0) (gt ($rangeEndScratch.Get "value") $totalPosts) -}}
+  {{- $rangeEndScratch.Set "value" $totalPosts -}}
+{{- end -}}
+{{- $rangeEnd := $rangeEndScratch.Get "value" -}}
+{{- $displayTotal := or (and (gt $totalPosts 0) $totalPosts) $rangeEnd -}}
+{{- $summary := printf "Page %d of %d (Posts %d-%d of %d)" $current $total $rangeStart $rangeEnd $displayTotal -}}
+<div class="pagination-wrapper mt-10 border-t border-slate-200/80 pt-8">
+  <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <p class="text-sm font-medium text-slate-600" aria-live="polite">{{ $summary }}</p>
+    <nav class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end" aria-label="Pagination">
+      <div class="flex items-center gap-2">
+        {{- if $paginator.HasPrev -}}
+          <a href="{{ $paginator.Prev.URL }}" class="pagination-button" aria-label="Go to newer posts">Newer</a>
+        {{- else -}}
+          <span class="pagination-button is-disabled" aria-disabled="true">Newer</span>
+        {{- end -}}
+        <ul class="flex flex-wrap items-center gap-2" aria-live="polite">
+          {{- range $pager := $paginator.Pagers -}}
+            {{- $isActive := eq $pager.PageNumber $current -}}
+            <li>
+              {{- if $isActive -}}
+                <span class="pagination-button is-active" aria-current="page" aria-label="Current page, page {{ $pager.PageNumber }}">{{ $pager.PageNumber }}</span>
+              {{- else -}}
+                <a href="{{ $pager.URL }}" class="pagination-button" aria-label="Go to page {{ $pager.PageNumber }}">{{ $pager.PageNumber }}</a>
+              {{- end -}}
+            </li>
+          {{- end -}}
+        </ul>
+        {{- if $paginator.HasNext -}}
+          <a href="{{ $paginator.Next.URL }}" class="pagination-button" aria-label="Go to older posts">Older</a>
+        {{- else -}}
+          <span class="pagination-button is-disabled" aria-disabled="true">Older</span>
+        {{- end -}}
+      </div>
+    </nav>
+  </div>
+</div>

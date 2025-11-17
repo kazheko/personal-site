@@ -1,0 +1,5 @@
+# Pagination defaults for archive templates
+[pagination]
+  disableAliases = false
+  pagerSize = 10
+  path = 'page'
