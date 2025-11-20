@@ -27,7 +27,7 @@
     <h2 class="list-sidebar__heading">Browse Tags</h2>
     <div class="tag-directory" data-tag-directory>
       {{- if and $tags (gt (len $tags) 0) -}}
-        {{- range $tagName, $tagPages := sort $tags -}}
+        {{- range $tagName, $tagPages := $tags -}}
           {{- $tagURL := printf "/tags/%s/" ($tagName | urlize) | relLangURL -}}
           <a class="tag-directory__item" href="{{ $tagURL }}">
             <span>{{ $tagName }}</span>
