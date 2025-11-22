@@ -1,0 +1,104 @@
+openapi: 3.0.1
+info:
+  title: Single Post Page Delivery
+  version: '1.0.0'
+  description: >-
+    Contracts describing how Hugo-generated post pages and tag archives behave so
+    the new single-post template can be validated end-to-end.
+servers:
+  - url: https://example.com
+paths:
+  /posts/{slug}/:
+    get:
+      summary: Render a single post with title, metadata row, and body content
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Post identifier derived from markdown filename/front matter.
+      responses:
+        '200':
+          description: Static HTML for the requested post
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/PostPage'
+        '301':
+          description: Canonical redirects when legacy slugs are requested
+        '404':
+          description: Returned when no post exists for the provided slug
+  /tags/{tag}/:
+    get:
+      summary: Tag archive reached when a metadata chip is clicked
+      parameters:
+        - name: tag
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: HTML list of posts filtered by the requested tag
+          content:
+            text/html:
+              schema:
+                $ref: '#/components/schemas/TagArchive'
+        '404':
+          description: Returned when the tag is not defined in taxonomies
+components:
+  schemas:
+    PostPage:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Visible `<h1>` displayed at the top of the page.
+        metadataRow:
+          $ref: '#/components/schemas/MetadataRow'
+        bodyHtml:
+          type: string
+          description: Rendered HTML for the markdown body.
+    MetadataRow:
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagChip'
+          description: Ordered set of clickable tag chips; empty array renders the "Untagged" placeholder.
+        publishDate:
+          type: string
+          format: date
+          description: ISO publish date backing the `<time datetime>` attribute.
+        publishDateDisplay:
+          type: string
+          description: Human-readable date string shown next to the tag list.
+    TagChip:
+      type: object
+      properties:
+        label:
+          type: string
+        href:
+          type: string
+          format: uri
+    TagArchive:
+      type: object
+      properties:
+        tag:
+          type: string
+          description: Tag name displayed on the archive page.
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostSummary'
+    PostSummary:
+      type: object
+      properties:
+        title:
+          type: string
+        excerpt:
+          type: string
+        href:
+          type: string
