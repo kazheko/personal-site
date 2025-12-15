@@ -1,0 +1,47 @@
+{{- $page := . -}}
+{{- $tags := cond (isset $page.Params "tags") $page.Params.tags (slice) -}}
+{{- if not $tags -}}
+  {{- $tags = slice -}}
+{{- end -}}
+{{- $tagCount := len $tags -}}
+{{- $fallbackDateCopy := default "Draft date TBD" $page.Params.fallback_date_copy -}}
+{{- $dateDisplay := $fallbackDateCopy -}}
+{{- $dateISO := "" -}}
+{{- with .PublishDate -}}
+  {{- $dateDisplay = .Format "Jan 2, 2006" -}}
+  {{- $dateISO = .Format "2006-01-02" -}}
+{{- else -}}
+  {{- with .Date -}}
+    {{- $dateDisplay = .Format "Jan 2, 2006" -}}
+    {{- $dateISO = .Format "2006-01-02" -}}
+  {{- end -}}
+{{- end -}}
+<div class="post-meta">
+  <div class="post-meta__inner">
+    <div class="post-meta__chips" aria-label="Post tags">
+      <span class="sr-only">Tags:</span>
+      {{- if gt $tagCount 0 -}}
+        {{- range $index, $tag := $tags -}}
+          {{- $normalized := urlize $tag -}}
+          {{- $tagPage := site.GetPage (printf "/tags/%s" $normalized) -}}
+          {{- $href := cond $tagPage $tagPage.RelPermalink (printf "/tags/%s/" $normalized) -}}
+          <a href="{{ $href }}" class="post-meta-chip">
+            <span class="sr-only">Tag:</span>{{ $tag }}
+          </a>
+        {{- end -}}
+      {{- else -}}
+        <span class="post-meta-chip post-meta-chip--untagged" aria-label="This post is untagged">
+          Untagged
+        </span>
+      {{- end -}}
+    </div>
+    <div class="post-meta__date">
+      <span class="sr-only">Published on</span>
+      {{- if $dateISO -}}
+        <time datetime="{{ $dateISO }}" class="text-sm font-medium text-slate-900">{{ $dateDisplay }}</time>
+      {{- else -}}
+        <span class="text-sm font-medium text-slate-500">{{ $dateDisplay }}</span>
+      {{- end -}}
+    </div>
+  </div>
+</div>

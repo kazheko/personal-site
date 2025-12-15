@@ -1,4 +1,8 @@
-{{- $paginator := or (.Scratch.Get "listPaginator") (.Paginator) -}}
+{{- $paginator := .Scratch.Get "listPaginator" -}}
+{{- $supportedKinds := slice "home" "section" "taxonomy" "term" -}}
+{{- if and (not $paginator) (in $supportedKinds .Kind) -}}
+  {{- $paginator = .Paginator -}}
+{{- end -}}
 {{- if or (not $paginator) (le $paginator.TotalPages 1) -}}
   {{- return -}}
 {{- end -}}

@@ -26,6 +26,46 @@
     @apply sr-only focus:not-sr-only fixed top-3 left-3 z-50 rounded bg-brand-surface px-4 py-2 text-sm font-medium text-brand-text shadow-lg;
   }
 
+  .post-shell {
+    @apply mx-auto w-full max-w-4xl px-4 pb-16 pt-10 sm:pt-12 lg:pt-16;
+  }
+
+  .post-shell__header {
+    @apply space-y-4;
+  }
+
+  .post-shell__eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-slate-500;
+  }
+
+  .post-shell__title {
+    @apply text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl;
+  }
+
+  .post-meta {
+    @apply mt-6 border-b border-slate-200/80 pb-6;
+  }
+
+  .post-meta__inner {
+    @apply flex flex-col gap-4 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between;
+  }
+
+  .post-meta__chips {
+    @apply flex flex-wrap items-center gap-2;
+  }
+
+  .post-meta-chip {
+    @apply inline-flex min-h-[34px] items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700 transition-colors duration-150 hover:border-brand-accent hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+  }
+
+  .post-meta-chip--untagged {
+    @apply border-dashed border-slate-300 text-slate-500;
+  }
+
+  .post-meta__date {
+    @apply flex items-center gap-2 text-slate-700;
+  }
+
   /* Mobile menu dropdown visibility - only on small screens */
   @media (max-width: 639px) {
     [data-mobile-menu][data-state="closed"] {

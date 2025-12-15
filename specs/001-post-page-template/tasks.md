@@ -30,9 +30,9 @@ description: "Task list template for feature implementation"
 
 **Purpose**: Ensure Node/Hugo tooling is ready for the new single-post template workflows documented in quickstart.md.
 
-- [ ] T001 Run `npm install` at repository root (`package.json`) to refresh Tailwind/PostCSS dependencies before editing layouts.
-- [ ] T002 [P] Confirm the `npm run dev` script in `package.json` still runs the Tailwind watcher and `hugo server -D`; update the script if the concurrent watch chain drifted.
-- [ ] T003 [P] Run `hugo --environment production --minify` using `config/_default/config.toml` to capture baseline `public/` output before modifying `_default/single.html`.
+- [X] T001 Run `npm install` at repository root (`package.json`) to refresh Tailwind/PostCSS dependencies before editing layouts.
+- [X] T002 [P] Confirm the `npm run dev` script in `package.json` still runs the Tailwind watcher and `hugo server -D`; update the script if the concurrent watch chain drifted.
+- [X] T003 [P] Run `hugo --environment production --minify` using `config/_default/config.toml` to capture baseline `public/` output before modifying `_default/single.html`.
 
 ---
 
@@ -40,8 +40,8 @@ description: "Task list template for feature implementation"
 
 **Purpose**: Shared fixtures and localization strings every story reuses.
 
-- [ ] T004 Create a QA fixture markdown file at `content/posts/post-template-fixture/index.md` with varied front matter (0 tags, >5 tags, long title) for template validation.
-- [ ] T005 [P] Update `specs/001-post-page-template/quickstart.md` with instructions referencing the new fixture and required 375px/768px/1280px breakpoint checks.
+- [X] T004 Create a QA fixture markdown file at `content/posts/post-template-fixture/index.md` with varied front matter (0 tags, >5 tags, long title) for template validation.
+- [X] T005 [P] Update `specs/001-post-page-template/quickstart.md` with instructions referencing the new fixture and required 375px/768px/1280px breakpoint checks.
 - [ ] T006 [P] Add metadata translation keys (`TagsLabel`, `UntaggedLabel`, `PublishLabel`) to `i18n/en.toml` so partials can localize accessibility copy.
 
 **Checkpoint**: Foundation ready -> user story implementation can start.
@@ -56,11 +56,11 @@ description: "Task list template for feature implementation"
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] Scaffold `layouts/_default/single.html` from `layouts/_default/baseof.html` using an `<article>` wrapper and render `.Title` inside an `<h1>` before any other content.
-- [ ] T008 [P] [US1] Build `layouts/partials/post-meta-row.html` with a `header` section, visually hidden tags label, `<ul>` chip list placeholder, and `<time>` element fed by `.Date`/i18n strings.
-- [ ] T009 [US1] Include `{{ partial "post-meta-row.html" . }}` immediately after the `<h1>` in `layouts/_default/single.html`, ensuring skip links/headings still match `baseof.html` expectations.
-- [ ] T010 [US1] Apply Tailwind spacing/typography utilities directly in `layouts/_default/single.html` and `layouts/partials/post-meta-row.html` so the title + metadata row stay above the fold on mobile.
-- [ ] T011 [US1] Preview the fixture and an existing tagged post via `npm run dev`, documenting pass/fail notes for the independent test in `specs/001-post-page-template/artifacts/us1-context.md`.
+- [X] T007 [US1] Scaffold `layouts/_default/single.html` from `layouts/_default/baseof.html` using an `<article>` wrapper and render `.Title` inside an `<h1>` before any other content.
+- [X] T008 [P] [US1] Build `layouts/partials/post-meta-row.html` with a `header` section, visually hidden tags label, `<ul>` chip list placeholder, and `<time>` element fed by `.Date`/i18n strings.
+- [X] T009 [US1] Include `{{ partial "post-meta-row.html" . }}` immediately after the `<h1>` in `layouts/_default/single.html`, ensuring skip links/headings still match `baseof.html` expectations.
+- [X] T010 [US1] Apply Tailwind spacing/typography utilities directly in `layouts/_default/single.html` and `layouts/partials/post-meta-row.html` so the title + metadata row stay above the fold on mobile.
+- [X] T011 [US1] Preview the fixture and an existing tagged post via `npm run dev`, documenting pass/fail notes for the independent test in `specs/001-post-page-template/artifacts/us1-context.md`.
 
 **Parallel Execution Example**: After T007 defines the template block, T008 can progress independently because it only touches `layouts/partials/post-meta-row.html`.
 
@@ -76,10 +76,10 @@ description: "Task list template for feature implementation"
 
 ### Implementation for User Story 2
 
-- [ ] T012 [US2] Implement tag iteration in `layouts/partials/post-meta-row.html` using Hugo taxonomy lookups so each chip links to `/tags/{slug}/` or `.RelPermalink` per `contracts/post-page-template.openapi.yaml`.
-- [ ] T013 [US2] Add accessible labeling (aria-label, sr-only text, focus order) for the tag list inside `layouts/partials/post-meta-row.html` leveraging the `i18n/en.toml` strings.
-- [ ] T014 [P] [US2] Extend chip focus and hover styles in `assets/css/tailwind.css` or `tailwind.config.js` to provide visible focus rings without new color debt.
-- [ ] T015 [US2] Validate keyboard and mouse activation on tag chips using the fixture + live content, logging navigation proof in `specs/001-post-page-template/artifacts/us2-tag-nav.md`.
+- [X] T012 [US2] Implement tag iteration in `layouts/partials/post-meta-row.html` using Hugo taxonomy lookups so each chip links to `/tags/{slug}/` or `.RelPermalink` per `contracts/post-page-template.openapi.yaml`.
+- [X] T013 [US2] Add accessible labeling (aria-label, sr-only text, focus order) for the tag list inside `layouts/partials/post-meta-row.html` leveraging the `i18n/en.toml` strings.
+- [X] T014 [P] [US2] Extend chip focus and hover styles in `assets/css/tailwind.css` or `tailwind.config.js` to provide visible focus rings without new color debt.
+- [X] T015 [US2] Validate keyboard and mouse activation on tag chips using the fixture + live content, logging navigation proof in `specs/001-post-page-template/artifacts/us2-tag-nav.md`.
 
 **Parallel Execution Example**: T014 styling work in `assets/css/tailwind.css` can run in parallel with T012 logic because it does not depend on data binding.
 
@@ -95,10 +95,10 @@ description: "Task list template for feature implementation"
 
 ### Implementation for User Story 3
 
-- [ ] T016 [US3] Wrap `.Content` within a `prose` container and responsive padding block inside `layouts/_default/single.html` to keep headings, lists, and embeds sequential.
-- [ ] T017 [P] [US3] Adjust typography scale or spacing via `assets/css/tailwind.css` (`@layer components` overrides) so long-form copy remains readable at 375px/768px/1280px.
-- [ ] T018 [P] [US3] Update `tailwind.config.js` if additional typography plugin options or spacing tokens are required for the prose block.
-- [ ] T019 [US3] Run breakpoint sweeps on the fixture and a media-heavy post via `npm run dev`, capturing screenshots + notes in `specs/001-post-page-template/artifacts/us3-readability.md`.
+- [X] T016 [US3] Wrap `.Content` within a `prose` container and responsive padding block inside `layouts/_default/single.html` to keep headings, lists, and embeds sequential.
+- [X] T017 [P] [US3] Adjust typography scale or spacing via `assets/css/tailwind.css` (`@layer components` overrides) so long-form copy remains readable at 375px/768px/1280px.
+- [X] T018 [P] [US3] Update `tailwind.config.js` if additional typography plugin options or spacing tokens are required for the prose block.
+- [X] T019 [US3] Run breakpoint sweeps on the fixture and a media-heavy post via `npm run dev`, capturing screenshots + notes in `specs/001-post-page-template/artifacts/us3-readability.md`.
 
 **Parallel Execution Example**: T017 utility tweaks in `assets/css/tailwind.css` and T018 configuration adjustments can proceed simultaneously because they touch distinct files.
 
@@ -111,8 +111,8 @@ description: "Task list template for feature implementation"
 **Purpose**: Final audits spanning multiple stories.
 
 - [ ] T020 [P] Record Lighthouse + axe reports for the updated template and store them in `specs/001-post-page-template/artifacts/audits.md`.
-- [ ] T021 Run `npm run build` followed by `hugo --environment production --minify`, reviewing generated `public/posts/*/index.html` for regressions before opening the PR.
-- [ ] T022 Update any affected release notes or README sections referencing single post behavior in `README.md` to document the new metadata row.
+- [X] T021 Run `npm run build` followed by `hugo --environment production --minify`, reviewing generated `public/posts/*/index.html` for regressions before opening the PR.
+- [X] T022 Update any affected release notes or README sections referencing single post behavior in `README.md` to document the new metadata row.
 
 ---
 

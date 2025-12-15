@@ -1,9 +1,10 @@
-# Quickstart – Single Post Page Template
+# Quickstart - Single Post Page Template
 
 ## 1. Environment Prep
 1. Install dependencies: `npm install` (already satisfied in repo but rerun if packages changed).
 2. Start Tailwind + Hugo watcher: `npm run dev` (invokes PostCSS watch and `hugo server`).
-3. Open `http://localhost:1313` and pin two sample posts for live preview (one with tags, one without).
+3. Use the QA bundle at `content/posts/post-template-fixture/index.md` for validation. Preview it unmodified to test the 0-tag path, then temporarily copy the arrays under `params.tag_sets.many` or `params.tag_sets.alternating` into the `tags` front matter to exercise wrapped chip rows and long tag labels at 375px/768px/1280px breakpoints.
+4. Keep one previously published post open to compare typography hierarchy against production content.
 
 ## 2. Implement Layout & Metadata Partial
 1. Create `layouts/partials/post-meta-row.html` with the following responsibilities:
@@ -23,9 +24,9 @@
 
 ## 4. Verification & QA
 1. **Cross-device**: Inspect the template at 375px, 768px, and 1280px widths. Confirm long titles wrap and metadata stays near the top fold.
-2. **Edge content**: Preview posts with 0 tags, >5 tags, and long tag names. Confirm row wraps gracefully.
+2. **Edge content**: Use the fixture's tag sets to preview 0 tags, >5 tags, and alternating tag names. Confirm the row wraps gracefully and the publish date remains visible.
 3. **Accessibility**: Tab through tag chips to verify focus order and screen reader labels. Run axe (browser extension) on a sample post.
 4. **Performance**: Run `hugo --environment production --minify && npm run build` to confirm no build regressions, then execute Lighthouse in mobile mode and capture screenshots.
-5. **Deployment preview**: Inspect `public/posts/<sample>/index.html` to confirm markup order before publishing via GitHub Pages workflow.
+5. **Deployment preview**: Inspect `public/posts/<sample>/index.md` to confirm markup order before publishing via GitHub Pages workflow.
 
 Following these steps prepares the repo for `/speckit.tasks` and later implementation branches.
