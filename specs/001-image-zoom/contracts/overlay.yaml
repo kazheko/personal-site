@@ -1,0 +1,10 @@
+openapi: 3.0.3
+info:
+  title: Blog Post Image Zoom (Client-only)
+  version: 0.1.0
+  description: >-
+    This feature runs entirely in the client; no remote API calls are required to open or
+    close the zoom overlay. The spec remains empty to document that no server integrations
+    are necessary for compliance with the constitution.
+servers: []
+paths: {}
