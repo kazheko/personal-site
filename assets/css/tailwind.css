@@ -26,8 +26,16 @@
     @apply sr-only focus:not-sr-only fixed top-3 left-3 z-50 rounded bg-brand-surface px-4 py-2 text-sm font-medium text-brand-text shadow-lg;
   }
 
+  .prose-about .about-label {
+    @apply mb-0 text-xs font-semibold uppercase tracking-widest text-slate-500;
+  }
+
+  .prose-about .about-label + h2 {
+    @apply mt-0;
+  }
+
   .post-shell {
-    @apply mx-auto w-full max-w-4xl px-4 pb-16 pt-10 sm:pt-12 lg:pt-16;
+    @apply mx-auto w-full max-w-4xl px-4;
   }
 
   .post-shell__header {
@@ -202,6 +210,38 @@
 
   .zoom-overlay__image {
     @apply relative z-10 max-h-[95vh] max-w-[95vw] object-contain pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-md bg-slate-900 px-6 py-3 text-base font-semibold text-white transition duration-150 hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+  }
+
+  .prose-about {
+    @apply prose prose-lg max-w-none text-slate-700;
+  }
+
+  .prose-about h2 {
+    @apply text-3xl font-semibold text-slate-900;
+  }
+
+  .prose-about p {
+    @apply text-lg leading-relaxed text-slate-700;
+  }
+
+  .about-shell {
+    @apply mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 lg:flex-row lg:gap-16;
+  }
+
+  .about-shell__column {
+    @apply flex w-full flex-col gap-12 lg:w-1/2;
+  }
+
+  .about-shell__portrait {
+    @apply w-full lg:w-1/2;
+  }
+
+  .about-label {
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-slate-400;
   }
 }
 

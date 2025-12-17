@@ -1,0 +1,5 @@
+[goldmark]
+  [goldmark.parser]
+    [goldmark.parser.attribute]
+      block = true
+      title = true

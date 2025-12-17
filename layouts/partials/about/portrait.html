@@ -1,0 +1,38 @@
+{{ $page := . }}
+{{ $portrait := $page.Params.portrait }}
+{{ $src := "" }}
+{{ if and $portrait (isset $portrait "src") (ne $portrait.src "") }}
+  {{ $src = $portrait.src }}
+{{ else if $page.Site.Params.author.photo }}
+  {{ $src = $page.Site.Params.author.photo }}
+{{ end }}
+{{ $alt := "Author portrait" }}
+{{ if and $portrait (isset $portrait "alt") (ne $portrait.alt "") }}
+  {{ $alt = $portrait.alt }}
+{{ else if $page.Site.Params.author.photo_alt }}
+  {{ $alt = $page.Site.Params.author.photo_alt }}
+{{ end }}
+{{ $img := false }}
+{{ if $src }}
+  {{ $candidate := resources.Get $src }}
+  {{ if $candidate }}
+    {{ $img = $candidate.Fit "1200x1600" }}
+  {{ end }}
+{{ end }}
+
+<figure class="aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-100 shadow-xl shadow-neutral-900/10">
+  {{ if $img }}
+    <img
+      src="{{ $img.RelPermalink }}"
+      width="{{ $img.Width }}"
+      height="{{ $img.Height }}"
+      alt="{{ $alt }}"
+      loading="lazy"
+      decoding="async"
+      class="h-full w-full object-cover" />
+  {{ else }}
+    <div class="flex h-full w-full items-center justify-center text-sm font-medium text-neutral-500">
+      Portrait coming soon
+    </div>
+  {{ end }}
+</figure>

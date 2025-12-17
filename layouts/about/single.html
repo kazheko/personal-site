@@ -1,0 +1,30 @@
+{{ define "main" }}
+  {{ $params := .Params }}
+  <section class="about-shell">
+    <div class="about-shell__column">
+      <h1 class="sr-only">{{ or .Title "About" }}</h1>
+      <article class="prose-about prose-headings:text-slate-900">
+        {{ .Content }}
+      </article>
+      {{ $siteContactHref := or $.Site.Params.social.gmail.url "" }}
+      {{ $siteContactLabel := or $.Site.Params.social.gmail.label "Contact" }}
+      {{ $contactHref := $siteContactHref }}
+      {{ $contactLabel := $siteContactLabel }}
+      {{ with $params.contact }}
+        {{ if .label }}{{ $contactLabel = .label }}{{ end }}
+        {{ if .href }}{{ $contactHref = .href }}{{ end }}
+        {{ if .email }}{{ $contactHref = printf "mailto:%s" .email }}{{ end }}
+      {{ end }}
+      {{ if $contactHref }}
+        <div id="contact-cta" class="pt-4">
+          <a class="btn-primary" href="{{ $contactHref }}" aria-label="Contact {{ $.Site.Title }}">
+            Contact
+          </a>
+        </div>
+      {{ end }}
+    </div>
+    <div class="about-shell__portrait">
+      {{ partial "about/portrait.html" . }}
+    </div>
+  </section>
+{{ end }}
