@@ -16,4 +16,11 @@
   {{- end -}}
   <script type="module" src="{{ $mobileBuilt.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $mobileBuilt.Data.Integrity }}"{{ end }}></script>
 {{- end -}}
-{{ block "page_scripts" . }}{{ end }}
+{{- $imageZoom := resources.Get "js/image-zoom.js" -}}
+{{- if $imageZoom -}}
+  {{- $zoomBuilt := $imageZoom | js.Build (dict "format" "esm" "target" "es2017" "minify" false) -}}
+  {{- if hugo.IsProduction -}}
+    {{- $zoomBuilt = $zoomBuilt | minify | resources.Fingerprint "sha256" -}}
+  {{- end -}}
+  <script type="module" src="{{ $zoomBuilt.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $zoomBuilt.Data.Integrity }}"{{ end }}></script>
+{{- end -}}

@@ -1,0 +1,37 @@
+﻿{{- $page := .Page -}}
+{{- $alt := .Text | default (.Title | default "") -}}
+{{- $caption := .Title | default "" -}}
+{{- $rawSrc := .Destination -}}
+
+{{- /* Enable zoom if image path contains /img/ folder */ -}}
+{{- $zoomAttr := or (strings.Contains $rawSrc "/img/") (strings.Contains $rawSrc "./img/") -}}
+
+{{- $inlineSrc := $rawSrc -}}
+{{- $originalSrc := $rawSrc -}}
+{{- with $page -}}
+  {{- $lookup := printf "**%s" (strings.TrimPrefix $rawSrc "./") -}}
+  {{- with .Resources.GetMatch $lookup -}}
+    {{- $originalSrc = .RelPermalink -}}
+    {{- if $zoomAttr -}}
+      {{- with .Resize "1200x" -}}
+        {{- $inlineSrc = .RelPermalink -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+<figure class="{{ if $zoomAttr }}zoomable-figure{{ else }}image-figure{{ end }}">
+  <img
+    src="{{ $inlineSrc | safeURL }}"
+    alt="{{ $alt }}"
+    loading="lazy"
+    decoding="async"
+    {{- if $zoomAttr }}
+      data-zoomable="true"
+      data-original-src="{{ $originalSrc | safeURL }}"
+      class="cursor-zoom-in"
+    {{- end }}
+  />
+  {{- if $caption }}
+    <figcaption>{{ $caption }}</figcaption>
+  {{- end }}
+</figure>
