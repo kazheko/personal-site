@@ -101,7 +101,7 @@
   }
 
   .post-card {
-    @apply rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm shadow-slate-900/5 backdrop-blur;
+
   }
 
   .post-card__header {
