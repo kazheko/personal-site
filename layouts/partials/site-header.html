@@ -15,17 +15,17 @@
         (dict "label" "About" "url" "/about/" "active" (eq ($page.RelPermalink | default "") "/about/"))
     -}}
 {{- end -}}
-<header class="fixed inset-x-0 top-0 z-50 bg-brand-surface/95 text-brand-text shadow-header supports-[backdrop-filter]:bg-brand-surface/80 supports-[backdrop-filter]:backdrop-blur">
+<header class="fixed inset-x-0 top-0 z-50 border-b border-brand-border-header bg-brand-surface-base text-brand-text-heading shadow-header">
   <div class="mx-auto max-w-6xl px-4">
     <div class="flex items-center justify-between py-3">
-      <a class="text-lg font-semibold tracking-tight text-brand-text hover:text-brand-text/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface" href="{{ site.Home.RelPermalink | default "/" }}">
+      <a class="text-lg font-semibold tracking-tight text-brand-text-heading no-underline hover:text-brand-accent-primary hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base" href="{{ site.Home.RelPermalink | default "/" }}">
         {{ $logo }}
       </a>
       
       {{- /* Mobile Menu Toggle Button - visible only on small screens */ -}}
       <button 
         type="button"
-        class="sm:hidden inline-flex items-center justify-center rounded-md p-2 text-brand-text/80 hover:text-brand-text hover:bg-brand-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface"
+        class="sm:hidden inline-flex items-center justify-center rounded-md p-2 text-brand-text-muted hover:text-brand-accent-primary hover:bg-brand-surface-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base"
         aria-expanded="false"
         aria-controls="primary-navigation"
         data-mobile-menu-toggle
@@ -45,14 +45,14 @@
       <nav 
         id="primary-navigation"
         aria-label="Primary"
-        class="hidden sm:block sm:static sm:border-t-0 sm:bg-transparent absolute inset-x-0 top-full border-t border-brand-text/10 bg-brand-surface/95 supports-[backdrop-filter]:bg-brand-surface/80 supports-[backdrop-filter]:backdrop-blur px-4 sm:px-0"
+        class="hidden sm:block sm:static sm:border-t-0 sm:bg-transparent absolute inset-x-0 top-full border-t border-brand-border-base bg-brand-surface-base px-4 sm:px-0"
         data-mobile-menu
         data-state="closed"
       >
         <ul class="py-2 sm:py-0 text-sm font-medium flex flex-col sm:flex-row gap-0 sm:gap-4">
           {{- range $menu -}}
             <li>
-              <a href="{{ .url }}" class="block sm:inline-flex items-center gap-1 rounded-md px-2 py-2 sm:py-1 transition-colors duration-150 {{ if .active }}text-brand-accent{{ else }}text-brand-text/80 hover:text-brand-text{{ end }} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface" data-mobile-menu-link>
+              <a href="{{ .url }}" class="block sm:inline-flex items-center gap-1 rounded-md px-2 py-2 sm:py-1 transition-colors duration-150 no-underline hover:no-underline {{ if .active }}text-brand-accent-primary{{ else }}text-brand-text-heading hover:text-brand-accent-primary{{ end }} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base" data-mobile-menu-link>
                 {{ .label }}
               </a>
             </li>

@@ -11,13 +11,30 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          surface: "#0f172a",
-          accent: "#38bdf8",
-          text: "#f8fafc"
+          surface: {
+            base: "#ffffff",
+            secondary: "#f8f9fa",
+            footer: "#f3f4f6"
+          },
+          text: {
+            primary: "#3a3a3a",
+            heading: "#111111",
+            muted: "#6b6b6b",
+            footer: "#4a4a4a"
+          },
+          border: {
+            base: "#e0e0e0",
+            header: "#eaeaea"
+          },
+          accent: {
+            primary: "#8bc34a",
+            hover: "#649130",
+            soft: "#e6f4ea"
+          }
         },
         canvas: {
           base: "#ffffff",
-          muted: "#f8fafc"
+          muted: "#f8f9fa"
         }
       },
       boxShadow: {
@@ -26,35 +43,78 @@ module.exports = {
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
-            color: theme("colors.slate.800"),
+            color: theme("colors.brand.text.primary"),
             maxWidth: "65ch",
             a: {
-              color: theme("colors.brand.accent"),
+              color: theme("colors.brand.accent.primary"),
+              textDecoration: "none",
               '&:hover': {
-                color: theme("colors.sky.500"),
+                color: theme("colors.brand.accent.hover"),
+                textDecoration: "underline",
+                textDecorationColor: theme("colors.brand.accent.hover"),
+              },
+            },
+            h1: {
+              color: theme("colors.brand.text.heading"),
+              scrollMarginTop: theme("spacing.24"),
+              a: {
+                color: theme("colors.brand.text.heading"),
+                textDecoration: "none",
+              },
+              'a:hover': {
+                color: theme("colors.brand.accent.hover"),
+                textDecoration: "none",
               },
             },
             h2: {
-              color: theme("colors.slate.900"),
+              color: theme("colors.brand.text.heading"),
               scrollMarginTop: theme("spacing.24"),
+              a: {
+                color: theme("colors.brand.text.heading"),
+                textDecoration: "none",
+              },
+              'a:hover': {
+                color: theme("colors.brand.accent.hover"),
+                textDecoration: "none",
+              },
             },
             h3: {
-              color: theme("colors.slate.900"),
+              color: theme("colors.brand.text.heading"),
               scrollMarginTop: theme("spacing.24"),
+              a: {
+                color: theme("colors.brand.text.heading"),
+                textDecoration: "none",
+              },
+              'a:hover': {
+                color: theme("colors.brand.accent.hover"),
+                textDecoration: "none",
+              },
+            },
+            h4: {
+              color: theme("colors.brand.text.heading"),
+              scrollMarginTop: theme("spacing.24"),
+              a: {
+                color: theme("colors.brand.text.heading"),
+                textDecoration: "none",
+              },
+              'a:hover': {
+                color: theme("colors.brand.accent.hover"),
+                textDecoration: "none",
+              },
             },
             blockquote: {
-              borderLeftColor: theme("colors.brand.accent"),
-              color: theme("colors.slate.700"),
+              borderLeftColor: theme("colors.brand.accent.primary"),
+              color: theme("colors.brand.text.primary"),
             },
             code: {
-              color: theme("colors.slate.900"),
+              color: theme("colors.brand.text.heading"),
               fontWeight: "600",
             },
             'code::before': { content: 'none' },
             'code::after': { content: 'none' },
             pre: {
-              backgroundColor: theme("colors.slate.900"),
-              color: theme("colors.white"),
+              backgroundColor: theme("colors.brand.surface.secondary"),
+              color: theme("colors.brand.text.primary"),
               padding: theme("spacing.4"),
               borderRadius: theme("borderRadius.xl"),
             },

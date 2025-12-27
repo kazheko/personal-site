@@ -2,10 +2,10 @@
 {{- $social := site.Params.social -}}
 {{- $year := now.UTC.Format "2006" -}}
 {{- $orderedKeys := slice "gmail" "linkedin" "twitter" "github" -}}
-<footer class="mt-12 bg-brand-surface/95 text-brand-text">
+<footer class="mt-12 border-t border-brand-border-base bg-brand-surface-footer text-brand-text-footer">
   <div class="mx-auto max-w-6xl px-4 py-8 text-sm">
     <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-      <p class="text-brand-text/80">&copy; {{ $year }} {{ $owner }}. All rights reserved.</p>
+      <p class="text-brand-text-footer">&copy; {{ $year }} {{ $owner }}. All rights reserved.</p>
       <ul class="flex flex-wrap items-center gap-4">
         {{- range $orderedKeys -}}
           {{- $key := . -}}
@@ -13,7 +13,7 @@
             {{- $label := .label | default (title $key) -}}
             {{- $aria := .aria_label | default (printf "Open %s in a new tab" $label) -}}
             <li>
-              <a class="inline-flex items-center gap-2 rounded-md border border-transparent px-3 py-1 text-brand-text/80 transition-colors duration-150 hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface" href="{{ .url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $aria }}">
+              <a class="inline-flex items-center gap-2 rounded-md border border-transparent px-3 py-1 text-brand-accent-primary transition-colors duration-150 hover:text-brand-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-footer" href="{{ .url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $aria }}">
                 {{ $label }}
               </a>
             </li>

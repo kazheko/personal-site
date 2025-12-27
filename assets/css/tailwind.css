@@ -8,26 +8,26 @@
   }
 
   body {
-    @apply bg-canvas-base text-slate-900 font-sans antialiased;
+    @apply bg-brand-surface-base text-brand-text-primary font-sans antialiased;
   }
 
   a {
-    @apply text-brand-accent transition-colors duration-200;
+    @apply text-brand-accent-primary transition-colors duration-200;
   }
 
   a:hover,
   a:focus-visible {
-    @apply text-sky-500;
+    @apply text-brand-accent-hover underline underline-offset-2 decoration-brand-accent-hover;
   }
 }
 
 @layer components {
   .skip-link {
-    @apply sr-only focus:not-sr-only fixed top-3 left-3 z-50 rounded bg-brand-surface px-4 py-2 text-sm font-medium text-brand-text shadow-lg;
+    @apply sr-only focus:not-sr-only fixed top-3 left-3 z-50 rounded border border-brand-border-base bg-brand-surface-secondary px-4 py-2 text-sm font-medium text-brand-text-heading shadow-lg;
   }
 
   .prose-about .about-label {
-    @apply mb-0 text-xs font-semibold uppercase tracking-widest text-slate-500;
+    @apply mb-0 text-xs font-semibold uppercase tracking-widest text-brand-text-muted;
   }
 
   .prose-about .about-label + h2 {
@@ -43,19 +43,19 @@
   }
 
   .post-shell__eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.3em] text-slate-500;
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-brand-text-muted;
   }
 
   .post-shell__title {
-    @apply text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl;
+    @apply text-4xl font-bold leading-tight tracking-tight text-brand-text-heading sm:text-5xl;
   }
 
   .post-meta {
-    @apply mt-6 border-b border-slate-200/80 pb-6;
+    @apply mt-6 border-b border-brand-border-base pb-6;
   }
 
   .post-meta__inner {
-    @apply flex flex-col gap-4 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between;
+    @apply flex flex-col gap-4 text-sm text-brand-text-muted sm:flex-row sm:items-center sm:justify-between;
   }
 
   .post-meta__chips {
@@ -63,15 +63,15 @@
   }
 
   .post-meta-chip {
-    @apply inline-flex min-h-[34px] items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700 transition-colors duration-150 hover:border-brand-accent hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+    @apply inline-flex min-h-[34px] items-center gap-2 rounded-full border border-brand-border-base bg-brand-accent-soft px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-accent-primary no-underline transition-colors duration-150 hover:border-brand-accent-primary hover:text-brand-accent-hover hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
   }
 
   .post-meta-chip--untagged {
-    @apply border-dashed border-slate-300 text-slate-500;
+    @apply border-dashed border-brand-border-base text-brand-text-muted;
   }
 
   .post-meta__date {
-    @apply flex items-center gap-2 text-slate-700;
+    @apply flex items-center gap-2 text-brand-text-muted;
   }
 
   /* Mobile menu dropdown visibility - only on small screens */
@@ -101,7 +101,7 @@
   }
 
   .post-card {
-
+    @apply bg-brand-surface-base;
   }
 
   .post-card__meta {
@@ -113,39 +113,39 @@
   }
 
   .post-card__date {
-    @apply text-xs uppercase tracking-wide text-slate-500;
+    @apply text-xs uppercase tracking-wide text-brand-text-muted;
   }
 
   .post-card__separator {
-    @apply text-xs uppercase tracking-wide text-slate-500;
+    @apply text-xs uppercase tracking-wide text-brand-text-muted;
   }
 
   .post-card__title {
-    @apply text-xl font-semibold text-slate-900;
+    @apply text-xl font-semibold text-brand-text-heading;
   }
 
   .post-card__title-link {
-    @apply transition-colors duration-150 hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+    @apply text-brand-text-heading no-underline transition-colors duration-150 hover:text-brand-accent-hover hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
   }
 
   .post-card__tags {
-    @apply text-sm font-medium text-slate-600;
+    @apply text-sm font-medium text-brand-accent-primary;
   }
 
   .post-card__tags--empty {
-    @apply text-slate-400;
+    @apply text-brand-text-muted;
   }
 
   .post-card__excerpt {
-    @apply mt-4 text-base leading-relaxed text-slate-700;
+    @apply mt-4 text-base leading-relaxed text-brand-text-primary;
   }
 
   .list-empty {
-    @apply rounded-xl border border-dashed border-slate-300 bg-slate-50/80 p-6 text-center text-slate-600;
+    @apply rounded-xl border border-dashed border-brand-border-base bg-brand-surface-secondary p-6 text-center text-brand-text-muted;
   }
 
   .list-sidebar {
-    @apply space-y-10 rounded-2xl border border-slate-100 bg-white/70 p-6 shadow-sm shadow-slate-900/5 backdrop-blur;
+    @apply space-y-10 rounded-2xl border border-brand-border-base bg-brand-surface-secondary p-6 shadow-sm shadow-black/5 backdrop-blur;
   }
 
   .list-sidebar__section {
@@ -153,7 +153,7 @@
   }
 
   .list-sidebar__heading {
-    @apply text-sm font-semibold uppercase tracking-wide text-slate-500;
+    @apply text-sm font-semibold uppercase tracking-wide text-brand-text-muted;
   }
 
   .list-sidebar__figure {
@@ -161,15 +161,15 @@
   }
 
   .list-sidebar__photo {
-    @apply h-32 w-32 rounded-full border border-slate-200 object-cover shadow-sm;
+    @apply h-32 w-32 rounded-full border border-brand-border-base object-cover shadow-sm;
   }
 
   .list-sidebar__name {
-    @apply text-base font-semibold text-slate-800;
+    @apply text-base font-semibold text-brand-text-heading;
   }
 
   .list-sidebar__bio {
-    @apply text-sm leading-relaxed text-slate-600;
+    @apply text-sm leading-relaxed text-brand-text-muted;
   }
 
   .tag-directory {
@@ -177,27 +177,27 @@
   }
 
   .tag-directory__item {
-    @apply inline-flex items-center gap-2 text-sm font-medium text-slate-700 transition-colors duration-150 hover:border-brand-accent hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+    @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium text-brand-accent-primary no-underline transition-colors duration-150 hover:text-brand-accent-hover hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
   }
 
   .tag-directory__count {
-    @apply text-xs font-semibold text-slate-400;
+    @apply text-xs font-semibold text-brand-text-muted;
   }
 
   .tag-directory__empty {
-    @apply text-sm text-slate-500;
+    @apply text-sm text-brand-text-muted;
   }
 
   .pagination-button {
-    @apply inline-flex min-h-[44px] items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors duration-150 hover:border-brand-accent hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+    @apply inline-flex min-h-[44px] items-center justify-center rounded-full border border-brand-border-base bg-brand-surface-base px-4 py-2 text-sm font-semibold text-brand-text-primary transition-colors duration-150 hover:bg-brand-accent-soft hover:text-brand-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
   }
 
   .pagination-button.is-active {
-    @apply border-slate-900 bg-slate-900 text-white hover:border-slate-900 hover:text-white;
+    @apply border-brand-accent-primary bg-brand-accent-primary text-white hover:border-brand-accent-primary hover:text-white;
   }
 
   .pagination-button.is-disabled {
-    @apply cursor-not-allowed border-slate-200 bg-slate-100 text-slate-400 hover:border-slate-200 hover:text-slate-400;
+    @apply cursor-not-allowed border-brand-border-base bg-brand-surface-secondary text-brand-text-muted hover:border-brand-border-base hover:text-brand-text-muted;
   }
 
   body.zoom-active {
@@ -221,19 +221,19 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-slate-900 px-6 py-3 text-base font-semibold text-white transition duration-150 hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+    @apply inline-flex items-center justify-center rounded-md bg-brand-accent-primary px-6 py-3 text-base font-semibold text-white no-underline transition duration-150 hover:bg-brand-accent-hover hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
   }
 
   .prose-about {
-    @apply prose prose-lg max-w-none text-slate-700;
+    @apply prose prose-lg max-w-none text-brand-text-primary;
   }
 
   .prose-about h2 {
-    @apply text-3xl font-semibold text-slate-900;
+    @apply text-3xl font-semibold text-brand-text-heading;
   }
 
   .prose-about p {
-    @apply text-lg leading-relaxed text-slate-700;
+    @apply text-lg leading-relaxed text-brand-text-primary;
   }
 
   .about-shell {
@@ -249,7 +249,7 @@
   }
 
   .about-label {
-    @apply text-xs font-semibold uppercase tracking-[0.3em] text-slate-400;
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-brand-text-muted;
   }
 }
 
