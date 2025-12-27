@@ -14,7 +14,8 @@ module.exports = {
           surface: {
             base: "#ffffff",
             secondary: "#f8f9fa",
-            footer: "#f3f4f6"
+            footer: "#f3f4f6",
+            sidebar: "#fbfbfc"
           },
           text: {
             primary: "#3a3a3a",
@@ -38,7 +39,8 @@ module.exports = {
         }
       },
       boxShadow: {
-        header: "0 4px 12px rgba(15, 23, 42, 0.08)"
+        header: "0 4px 12px rgba(15, 23, 42, 0.08)",
+        sidebar: "0 0 10px 0 rgba(35, 31, 32, 0.1)"
       },
       typography: ({ theme }) => ({
         DEFAULT: {
