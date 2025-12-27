@@ -104,11 +104,19 @@
 
   }
 
+  .post-card__meta {
+    @apply mb-1 flex flex-wrap items-center gap-x-2 gap-y-1;
+  }
+
   .post-card__header {
     @apply mb-2 space-y-1;
   }
 
   .post-card__date {
+    @apply text-xs uppercase tracking-wide text-slate-500;
+  }
+
+  .post-card__separator {
     @apply text-xs uppercase tracking-wide text-slate-500;
   }
 
