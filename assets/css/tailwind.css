@@ -132,6 +132,10 @@
     @apply text-sm font-medium text-brand-accent-primary;
   }
 
+  .post-card__tags a {
+    @apply no-underline hover:no-underline focus-visible:no-underline;
+  }
+
   .post-card__tags--empty {
     @apply text-brand-text-muted;
   }
