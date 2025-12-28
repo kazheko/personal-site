@@ -16,32 +16,32 @@
     {{- $dateISO = .Format "2006-01-02" -}}
   {{- end -}}
 {{- end -}}
-<div class="post-meta">
-  <div class="post-meta__inner">
-    <div class="post-meta__chips" aria-label="Post tags">
-      <span class="sr-only">Tags:</span>
-      {{- if gt $tagCount 0 -}}
-        {{- range $index, $tag := $tags -}}
-          {{- $normalized := urlize $tag -}}
-          {{- $tagPage := site.GetPage (printf "/tags/%s" $normalized) -}}
-          {{- $href := cond $tagPage $tagPage.RelPermalink (printf "/tags/%s/" $normalized) -}}
-          <a href="{{ $href }}" class="post-meta-chip">
-            <span class="sr-only">Tag:</span>{{ $tag }}
-          </a>
-        {{- end -}}
-      {{- else -}}
-        <span class="post-meta-chip post-meta-chip--untagged" aria-label="This post is untagged">
-          Untagged
-        </span>
-      {{- end -}}
-    </div>
-    <div class="post-meta__date">
-      <span class="sr-only">Published on</span>
-      {{- if $dateISO -}}
-        <time datetime="{{ $dateISO }}" class="text-sm font-medium text-brand-text-muted">{{ $dateDisplay }}</time>
-      {{- else -}}
-        <span class="text-sm font-medium text-brand-text-muted">{{ $dateDisplay }}</span>
-      {{- end -}}
-    </div>
-  </div>
+<div class="post-card__meta">
+  <span class="post-card__tags" aria-label="Post tags">
+    <span class="sr-only">Tags:</span>
+    {{- if gt $tagCount 0 -}}
+    {{- range $index, $tag := $tags -}}
+    {{- $normalized := urlize $tag -}}
+    {{- $tagPage := site.GetPage (printf "/tags/%s" $normalized) -}}
+    {{- $href := cond $tagPage $tagPage.RelPermalink (printf "/tags/%s/" $normalized) -}}
+    {{- if $index -}}, {{ end -}}
+    <a href="{{ $href }}">
+      <span class="sr-only">Tag:</span>{{ $tag }}
+    </a>
+    {{- end -}}
+    {{- else -}}
+    <span class="post-meta-chip post-meta-chip--untagged" aria-label="This post is untagged">
+      Untagged
+    </span>
+    {{- end -}}
+  </span>
+  <span class="post-card__separator">—</span>
+  <span class="post-card__date">
+    <span class="sr-only">Published on</span>
+    {{- if $dateISO -}}
+    <time datetime="{{ $dateISO }}">{{ $dateDisplay }}</time>
+    {{- else -}}
+    <span>{{ $dateDisplay }}</span>
+    {{- end -}}
+  </span>
 </div>

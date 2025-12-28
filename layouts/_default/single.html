@@ -1,12 +1,11 @@
 {{ define "main" }}
   {{- $titleSlug := printf "post-title-%s" (.Title | urlize) -}}
   <article class="post-shell" aria-labelledby="{{ $titleSlug }}">
+    {{ partial "post-meta-row.html" . }}
     <header class="post-shell__header">
-      <p class="post-shell__eyebrow" aria-hidden="true">Post</p>
       <h1 id="{{ $titleSlug }}" class="post-shell__title">
         {{ .Title }}
       </h1>
-      {{ partial "post-meta-row.html" . }}
     </header>
     <div class="prose mt-10 max-w-none text-base leading-relaxed text-brand-text-primary">
       {{ .Content }}
