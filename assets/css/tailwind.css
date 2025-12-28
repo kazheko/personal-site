@@ -193,7 +193,7 @@
   }
 
   .pagination-button {
-    @apply inline-flex min-h-[44px] items-center justify-center rounded-full border border-brand-border-base bg-brand-surface-base px-4 py-2 text-sm font-semibold text-brand-text-primary transition-colors duration-150 hover:bg-brand-accent-soft hover:text-brand-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
+    @apply inline-flex min-h-[44px] items-center justify-center rounded-full border border-brand-border-base bg-brand-surface-base px-4 py-2 text-sm font-semibold text-brand-text-primary transition-colors duration-150 hover:bg-brand-accent-soft hover:text-brand-accent-hover hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
   }
 
   .pagination-button.is-active {
@@ -225,7 +225,7 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-brand-accent-primary px-6 py-3 text-base font-semibold text-white no-underline transition duration-150 hover:bg-brand-accent-hover hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
+    @apply inline-flex items-center justify-center rounded-md bg-brand-accent-primary px-6 py-3 text-base font-semibold text-white no-underline transition duration-150 hover:bg-brand-accent-hover hover:no-underline hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
   }
 
   .prose-about {
