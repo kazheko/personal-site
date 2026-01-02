@@ -28,6 +28,7 @@ aria_label = "Browse Yauheni Kazheka on GitHub"
 
 [author]
 name = "Yauheni Kazheka"
+role = "Front-end Engineer"
 bio = "Pragmatic frontend engineer who ships performant static experiences with Hugo and Tailwind."
 photo = "images/author.jpg"
 photo_alt = "Portrait of Yauheni Kazheka"

@@ -142,11 +142,11 @@
     @apply sr-only focus:not-sr-only fixed top-3 left-3 z-50 rounded border border-brand-border-base bg-brand-surface-secondary px-4 py-2 text-sm font-medium text-brand-text-heading shadow-lg;
   }
 
-  .prose-about .about-label {
+  .about-body .about-label {
     @apply mb-0 text-xs font-semibold uppercase tracking-widest text-brand-text-muted;
   }
 
-  .prose-about .about-label + h2 {
+  .about-body .about-label + h2 {
     @apply mt-0;
   }
 
@@ -447,24 +447,28 @@
     @apply inline-flex items-center justify-center rounded-md bg-brand-accent-primary px-6 py-3 text-base font-semibold text-white no-underline transition duration-150 hover:bg-brand-accent-hover hover:no-underline hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
   }
 
-  .prose-about {
-    @apply prose prose-lg max-w-none text-brand-text-primary;
+  .about-body {
+    @apply max-w-none text-base leading-[1.7] text-brand-text-primary;
   }
 
-  .prose-about h2 {
-    @apply text-3xl font-semibold text-brand-text-heading;
+  .about-body h2 {
+    @apply mt-12 mb-5;
   }
 
-  .prose-about p {
-    @apply text-lg leading-relaxed text-brand-text-primary;
+  .about-body p {
+    @apply mb-[1.4em] leading-[1.7];
+  }
+
+  .about-body p + .about-label {
+    @apply mt-12;
   }
 
   .about-shell {
-    @apply mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 lg:flex-row lg:gap-16;
+    @apply mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 lg:flex-row lg:gap-16 md:px-0;
   }
 
   .about-shell__column {
-    @apply flex w-full flex-col gap-12 lg:w-1/2;
+    @apply flex w-full flex-col gap-6 lg:w-1/2;
   }
 
   .about-shell__portrait {
@@ -479,5 +483,9 @@
 @layer utilities {
   .header-space {
     @apply pt-24 sm:pt-28;
+  }
+
+  .rounded-none {
+    border-radius: 0;
   }
 }

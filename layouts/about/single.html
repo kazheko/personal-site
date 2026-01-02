@@ -3,7 +3,7 @@
   <section class="about-shell">
     <div class="about-shell__column">
       <h1 class="sr-only">{{ or .Title "About" }}</h1>
-      <article class="prose-about prose-headings:text-brand-text-heading">
+      <article class="about-body">
         {{ .Content }}
       </article>
       {{ $siteContactHref := or $.Site.Params.social.gmail.url "" }}
