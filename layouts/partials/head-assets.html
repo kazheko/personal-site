@@ -5,8 +5,8 @@
 {{- $inter700 := resources.Get "fonts/Inter-700.woff2" | resources.Copy "fonts/Inter-700.woff2" -}}
 {{- $jetbrains400 := resources.Get "fonts/JetBrainsMono-400.woff2" | resources.Copy "fonts/JetBrainsMono-400.woff2" -}}
 {{- $pageTitle := site.Title -}}
-{{- with .Title -}}
-  {{- $pageTitle = printf "%s | %s" . site.Title -}}
+{{- if and .Title (ne .Title site.Title) (not .IsHome) -}}
+  {{- $pageTitle = printf "%s | %s" .Title site.Title -}}
 {{- end -}}
 {{- $postcssOpts := dict "config" "postcss.config.js" -}}
 {{- $css := resources.Get "css/tailwind.css" | postCSS $postcssOpts -}}
