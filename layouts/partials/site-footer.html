@@ -6,15 +6,23 @@
   <div class="mx-auto max-w-6xl px-4 py-8 text-sm">
     <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
       <p class="text-brand-text-footer">&copy; {{ $year }} {{ $owner }}. All rights reserved.</p>
-      <ul class="flex flex-wrap items-center gap-4">
+      <ul class="flex flex-wrap items-center gap-3">
         {{- range $orderedKeys -}}
           {{- $key := . -}}
           {{- with index $social $key -}}
             {{- $label := .label | default (title $key) -}}
             {{- $aria := .aria_label | default (printf "Open %s in a new tab" $label) -}}
             <li>
-              <a class="inline-flex items-center gap-2 rounded-md border border-transparent px-3 py-1 text-brand-accent-primary transition-colors duration-150 hover:text-brand-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-footer" href="{{ .url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $aria }}">
-                {{ $label }}
+              <a class="inline-flex items-center gap-2 rounded-md border border-transparent px-3 py-1 text-brand-text-muted transition-colors duration-150 hover:text-brand-accent-hover active:text-brand-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-footer" href="{{ .url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $aria }}">
+                {{- if eq $key "gmail" -}}
+                  {{ partial "icons/email.html" . }}
+                {{- else if eq $key "linkedin" -}}
+                  {{ partial "icons/linkedin.html" . }}
+                {{- else if eq $key "twitter" -}}
+                  {{ partial "icons/twitter.html" . }}
+                {{- else if eq $key "github" -}}
+                  {{ partial "icons/github.html" . }}
+                {{- end -}}
               </a>
             </li>
           {{- end -}}
