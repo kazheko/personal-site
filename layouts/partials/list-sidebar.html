@@ -4,7 +4,7 @@
   {{- with $author -}}
     {{- $photoAlt := .photo_alt | default (printf "Portrait of %s" (.name | default site.Title)) -}}
     <section class="list-sidebar__section">
-      <h2 class="list-sidebar__heading">About</h2>
+      <p class="list-sidebar__heading">About</p>
       {{- with .photo -}}
         {{- with resources.Get . -}}
           {{- $processed := .Fit "400x400" -}}
@@ -21,17 +21,24 @@
       {{- with .bio -}}
         <p class="list-sidebar__bio">{{ . }}</p>
       {{- end -}}
+      {{- with .role -}}
+        <p class="list-sidebar__meta">{{ . }}</p>
+      {{- end -}}
+      {{- with .links -}}
+        {{- if gt (len .) 0 -}}
+          <p class="list-sidebar__meta">{{ delimit . " / " }}</p>
+        {{- end -}}
+      {{- end -}}
     </section>
   {{- end -}}
-  <section class="list-sidebar__section" aria-live="polite">
-    <h2 class="list-sidebar__heading">Browse Tags</h2>
+  <section class="list-sidebar__section">
+    <p class="list-sidebar__heading">Tags</p>
     <div class="tag-directory" data-tag-directory>
       {{- if and $tags (gt (len $tags) 0) -}}
         {{- range $tagName, $tagPages := $tags -}}
           {{- $tagURL := printf "/tags/%s/" ($tagName | urlize) | relLangURL -}}
           <a class="tag-directory__item" href="{{ $tagURL }}">
             <span>{{ $tagName }}</span>
-            <span class="tag-directory__count">{{ len $tagPages }}</span>
           </a>
         {{- end -}}
       {{- else -}}

@@ -364,15 +364,15 @@
   }
 
   .list-sidebar {
-    @apply space-y-10 bg-brand-surface-sidebar p-6 shadow-sidebar backdrop-blur;
+    @apply space-y-6 bg-brand-surface-sidebar p-6 text-[14px] font-normal leading-[1.6] text-brand-text-primary shadow-sidebar backdrop-blur;
   }
 
   .list-sidebar__section {
-    @apply space-y-3;
+    @apply space-y-2;
   }
 
   .list-sidebar__heading {
-    @apply text-[14px] font-medium leading-[1.4] uppercase tracking-wide text-brand-text-muted;
+    @apply text-[13px] font-semibold uppercase tracking-[0.04em] text-brand-text-muted;
   }
 
   .list-sidebar__figure {
@@ -384,11 +384,15 @@
   }
 
   .list-sidebar__name {
-    @apply text-base font-semibold text-brand-text-heading;
+    @apply text-[15px] font-semibold leading-[1.4] text-brand-text-heading;
   }
 
   .list-sidebar__bio {
-    @apply text-[14px] leading-[1.5] text-brand-text-muted;
+    @apply text-[14px] leading-[1.6] text-brand-text-primary;
+  }
+
+  .list-sidebar__meta {
+    @apply text-[13px] leading-[1.5] text-brand-text-muted;
   }
 
   .tag-directory {
@@ -396,7 +400,7 @@
   }
 
   .tag-directory__item {
-    @apply inline-flex min-h-[44px] items-center gap-2 rounded-full px-3 py-1 text-[14px] font-medium leading-[1.4] text-brand-accent-primary no-underline transition-colors duration-150 hover:text-brand-accent-hover hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
+    @apply inline-flex items-center gap-2 px-2 py-[3px] text-[13px] font-medium leading-[1.4] text-brand-accent-primary no-underline transition-colors duration-150 hover:text-brand-accent-hover hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
   }
 
   .tag-directory__count {
