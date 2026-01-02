@@ -15,7 +15,7 @@
 {{- $summary := printf "Page %d of %d (%d-%d of %d)" $current $total $rangeStart $rangeEnd $totalPosts -}}
 <div class="pagination-wrapper mt-10 border-t border-brand-border-base pt-8">
   <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-    <p class="text-sm font-medium text-brand-text-muted" aria-live="polite">{{ $summary }}</p>
+    <p class="text-[14px] font-medium leading-[1.4] text-brand-text-muted" aria-live="polite">{{ $summary }}</p>
     <nav class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end" aria-label="Pagination">
       <div class="flex items-center gap-2">
         {{- if $paginator.HasPrev -}}

@@ -25,9 +25,7 @@
     {{- $tagPage := site.GetPage (printf "/tags/%s" $normalized) -}}
     {{- $href := cond $tagPage $tagPage.RelPermalink (printf "/tags/%s/" $normalized) -}}
     {{- if $index -}}, {{ end -}}
-    <a href="{{ $href }}">
-      <span class="sr-only">Tag:</span>{{ $tag }}
-    </a>
+    <a href="{{ $href }}"><span class="sr-only">Tag:</span>{{ $tag }}</a>
     {{- end -}}
     {{- else -}}
     <span class="post-meta-chip post-meta-chip--untagged" aria-label="This post is untagged">

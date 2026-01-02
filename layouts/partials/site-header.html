@@ -25,7 +25,7 @@
       {{- /* Mobile Menu Toggle Button - visible only on small screens */ -}}
       <button 
         type="button"
-        class="sm:hidden inline-flex items-center justify-center rounded-md p-2 text-brand-text-muted hover:text-brand-accent-primary hover:bg-brand-surface-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base"
+        class="sm:hidden inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md p-2 text-brand-text-muted hover:text-brand-accent-primary hover:bg-brand-surface-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base"
         aria-expanded="false"
         aria-controls="primary-navigation"
         data-mobile-menu-toggle
@@ -49,10 +49,10 @@
         data-mobile-menu
         data-state="closed"
       >
-        <ul class="py-2 sm:py-0 text-sm font-medium flex flex-col sm:flex-row gap-0 sm:gap-4">
+        <ul class="flex flex-col gap-0 py-2 text-[14px] font-medium leading-[1.4] sm:flex-row sm:gap-4 sm:py-0">
           {{- range $menu -}}
             <li>
-              <a href="{{ .url }}" class="block sm:inline-flex items-center gap-1 rounded-md px-2 py-2 sm:py-1 transition-colors duration-150 no-underline hover:no-underline {{ if .active }}text-brand-accent-primary{{ else }}text-brand-text-heading hover:text-brand-accent-primary{{ end }} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base" data-mobile-menu-link>
+              <a href="{{ .url }}" class="block min-h-[44px] rounded-md px-3 py-2 transition-colors duration-150 no-underline hover:no-underline sm:inline-flex sm:items-center sm:gap-1 sm:py-1 {{ if .active }}text-brand-accent-primary{{ else }}text-brand-text-heading hover:text-brand-accent-primary{{ end }} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base" data-mobile-menu-link>
                 {{ .label }}
               </a>
             </li>

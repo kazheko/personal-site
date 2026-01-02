@@ -9,6 +9,27 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: [
+          "Inter",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "sans-serif"
+        ],
+        mono: [
+          "JetBrains Mono",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          "Liberation Mono",
+          "Courier New",
+          "monospace"
+        ]
+      },
       colors: {
         brand: {
           surface: {
@@ -110,13 +131,15 @@ module.exports = {
             },
             code: {
               color: theme("colors.brand.text.heading"),
-              fontWeight: "600",
+              fontFamily: theme("fontFamily.mono").join(", "),
+              fontWeight: "400",
             },
             'code::before': { content: 'none' },
             'code::after': { content: 'none' },
             pre: {
               backgroundColor: theme("colors.brand.surface.secondary"),
               color: theme("colors.brand.text.primary"),
+              fontFamily: theme("fontFamily.mono").join(", "),
               padding: theme("spacing.4"),
               borderRadius: theme("borderRadius.xl"),
             },

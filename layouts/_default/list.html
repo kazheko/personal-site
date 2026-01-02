@@ -19,7 +19,7 @@
             {{- end -}}
             <article class="post-card">
               <div class="post-card__meta">
-                <p class="post-card__tags">
+                <span class="post-card__tags">
                   {{- if gt (len $tagsForPost) 0 -}}
                     {{- range $index, $tagName := $tagsForPost -}}
                       {{- if $index -}}, {{ end -}}
@@ -29,9 +29,9 @@
                   {{- else -}}
                     <span class="post-card__tags--empty">No tags</span>
                   {{- end -}}
-                </p>
+                </span>
                 <span class="post-card__separator">—</span>
-                <p class="post-card__date">{{ $date }}</p>
+                <span class="post-card__date">{{ $date }}</span>
               </div>
               <header class="post-card__header">
                 <h2 class="post-card__title">

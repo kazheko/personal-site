@@ -1,4 +1,9 @@
 {{- /* Shared head include with Tailwind pipeline and page-level CSS hook */ -}}
+{{- $inter400 := resources.Get "fonts/Inter-400.woff2" | resources.Copy "fonts/Inter-400.woff2" -}}
+{{- $inter500 := resources.Get "fonts/Inter-500.woff2" | resources.Copy "fonts/Inter-500.woff2" -}}
+{{- $inter600 := resources.Get "fonts/Inter-600.woff2" | resources.Copy "fonts/Inter-600.woff2" -}}
+{{- $inter700 := resources.Get "fonts/Inter-700.woff2" | resources.Copy "fonts/Inter-700.woff2" -}}
+{{- $jetbrains400 := resources.Get "fonts/JetBrainsMono-400.woff2" | resources.Copy "fonts/JetBrainsMono-400.woff2" -}}
 {{- $pageTitle := site.Title -}}
 {{- with .Title -}}
   {{- $pageTitle = printf "%s | %s" . site.Title -}}
