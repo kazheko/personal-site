@@ -1,3 +1,5 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'Yauheni Kazheka'
+enableRobotsTXT = true
+canonifyURLs = true
