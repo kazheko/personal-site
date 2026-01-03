@@ -488,4 +488,19 @@
   .rounded-none {
     border-radius: 0;
   }
+
+  .page-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 24px;
+    margin-top: 0;
+  }
+
+  .page-header-wrapper {
+  }
+
+  .page-header-back {
+    @apply text-[14px] font-medium leading-[1.4] transition-colors duration-150 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface-base;
+  }
 }

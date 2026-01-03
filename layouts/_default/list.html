@@ -6,9 +6,17 @@
   {{- $posts := $paginator.Pages -}}
   {{- $author := site.Params.author | default (dict) -}}
   {{- $tags := site.Taxonomies.tags | default dict -}}
+  {{- $isTagList := eq .Section "tags" -}}
+  {{- $tagName := .Title -}}
   <section class="mx-auto w-full max-w-6xl px-4 pb-16">
     <div class="list-layout">
       <div class="list-posts">
+        {{- if $isTagList -}}
+          <div class="page-header-wrapper">
+            <a href="{{ "/blog/" | relLangURL }}" class="page-header-back">View all posts</a>
+            <h1 class="page-title text-brand-text-heading">Posts tagged with "{{ $tagName }}"</h1>
+          </div>
+        {{- end -}}
         {{- if gt (len $posts) 0 -}}
           {{- range $posts -}}
             {{- $tagsForPost := .Params.tags | default slice -}}
