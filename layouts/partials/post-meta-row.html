@@ -7,13 +7,20 @@
 {{- $fallbackDateCopy := default "Draft date TBD" $page.Params.fallback_date_copy -}}
 {{- $dateDisplay := $fallbackDateCopy -}}
 {{- $dateISO := "" -}}
-{{- with .PublishDate -}}
+{{- $lastmodDisplay := "" -}}
+{{- $lastmodISO := "" -}}
+{{- $publishDate := .PublishDate -}}
+{{- if not $publishDate -}}
+  {{- $publishDate = .Date -}}
+{{- end -}}
+{{- with $publishDate -}}
   {{- $dateDisplay = .Format "Jan 2, 2006" -}}
   {{- $dateISO = .Format "2006-01-02" -}}
-{{- else -}}
-  {{- with .Date -}}
-    {{- $dateDisplay = .Format "Jan 2, 2006" -}}
-    {{- $dateISO = .Format "2006-01-02" -}}
+{{- end -}}
+{{- with .Lastmod -}}
+  {{- if and $publishDate (ne .Unix $publishDate.Unix) -}}
+    {{- $lastmodDisplay = .Format "Jan 2, 2006" -}}
+    {{- $lastmodISO = .Format "2006-01-02" -}}
   {{- end -}}
 {{- end -}}
 <div class="post-card__meta">
@@ -40,6 +47,10 @@
     <time datetime="{{ $dateISO }}">{{ $dateDisplay }}</time>
     {{- else -}}
     <span>{{ $dateDisplay }}</span>
+    {{- end -}}
+    {{- if $lastmodDisplay -}}
+    <span class="sr-only">Updated on</span>
+    <time datetime="{{ $lastmodISO }}">(updated {{ $lastmodDisplay }})</time>
     {{- end -}}
   </span>
 </div>
