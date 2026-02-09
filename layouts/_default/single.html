@@ -13,3 +13,19 @@
   </article>
   {{ partial "zoom-overlay.html" . }}
 {{ end }}
+
+{{ define "page_scripts" }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ .Title }}",
+    "datePublished": "{{ .Date }}",
+    "dateModified": "{{ .Lastmod }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ .Site.Params.author.name }}"
+    }
+  }
+  </script>
+{{ end }}

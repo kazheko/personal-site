@@ -23,17 +23,4 @@
     {{- $zoomBuilt = $zoomBuilt | minify | resources.Fingerprint "sha256" -}}
   {{- end -}}
   <script type="module" src="{{ $zoomBuilt.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $zoomBuilt.Data.Integrity }}"{{ end }}></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "{{ .Title }}",
-    "datePublished": "{{ .Date }}",
-    "dateModified": "{{ .Lastmod }}",
-    "author": {
-      "@type": "Person",
-      "name": "{{ .Site.Params.author.name }}"
-    }
-  }
-  </script>
 {{- end -}}

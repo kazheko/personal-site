@@ -28,3 +28,22 @@
     </div>
   </section>
 {{ end }}
+
+{{ define "page_scripts" }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ .Site.Params.author.name }}",
+    "jobTitle": "{{ .Site.Params.author.role }}",
+    "description": "{{ .Site.Params.author.bio }}",
+    "url": "{{ .Site.BaseURL }}",
+    "image": "{{ .Site.BaseURL }}{{ .Site.Params.author.photo }}",
+    "sameAs": [
+      "{{ .Site.Params.social.linkedin.url }}",
+      "{{ .Site.Params.social.twitter.url }}",
+      "{{ .Site.Params.social.github.url }}"
+    ]
+  }
+  </script>
+{{ end }}

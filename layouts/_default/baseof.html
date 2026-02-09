@@ -14,5 +14,6 @@
     </main>
     {{ partial "site-footer.html" . }}
     {{ partial "foot-scripts.html" . }}
+    {{ block "page_scripts" . }}{{ end }}
   </body>
 </html>
