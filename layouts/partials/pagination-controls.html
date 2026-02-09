@@ -4,7 +4,7 @@
 {{- end -}}
 {{- $current := $paginator.PageNumber -}}
 {{- $total := $paginator.TotalPages -}}
-{{- $totalPosts := .TotalPosts | default 0 -}}
+{{- $totalPosts := $paginator.TotalNumberOfElements -}}
 {{- $pageSize := $paginator.PagerSize -}}
 {{- $currentPagePosts := len $paginator.Pages -}}
 {{- $rangeStart := add (mul (sub $current 1) $pageSize) 1 -}}
