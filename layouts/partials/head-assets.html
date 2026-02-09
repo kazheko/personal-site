@@ -21,8 +21,16 @@
   {{- if eq (hugo.Environment) "development" -}}
     <meta name="robots" content="noindex, nofollow">
   {{- end -}}
-  {{- $rss := "/index.xml" | absURL -}}
-  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ $rss }}">
+  {{- $rssURL := "/index.xml" -}}
+  {{- $rssTitle := .Site.Title -}}
+  {{- if and (eq .Section "blog") .IsSection -}}
+    {{- $rssURL = "/blog/index.xml" -}}
+  {{- else if eq .Type "tags" -}}
+    {{- $rssURL = printf "/tags/%s/index.xml" .Title -}}
+    {{- $rssTitle = printf "%s - %s" .Title .Site.Title -}}
+  {{- end -}}
+  {{- $rss := $rssURL | absURL -}}
+  <link rel="alternate" type="application/rss+xml" title="{{ $rssTitle }}" href="{{ $rss }}">
   <link rel="stylesheet" href="{{ $css.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $css.Data.Integrity }}"{{ end }}>
   {{ partial "pagination-meta.html" . }}
   {{ block "page_css" . }}{{ end }}
