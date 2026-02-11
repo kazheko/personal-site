@@ -2,6 +2,7 @@ logo_text = "Yauheni Kazheka"
 
 [meta]
 description = "Personal site of Yauheni Kazheka featuring projects and writing."
+defaultImage = "/images/og-default.jpeg"
 
 [footer]
 owner = "Yauheni Kazheka"
@@ -20,6 +21,8 @@ aria_label = "View Yauheni Kazheka on LinkedIn"
 label = "Twitter"
 url = "https://twitter.com/ykazheka"
 aria_label = "Follow Yauheni Kazheka on Twitter"
+# Used in Twitter Card meta tags (without @)
+handle = "ykazheka"
 
 [social.github]
 label = "GitHub"

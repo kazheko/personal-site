@@ -1,0 +1,70 @@
+{{- /* SEO meta tags for Open Graph and Twitter Card */ -}}
+{{- $title := .Title -}}
+{{- if .IsHome -}}
+  {{- $title = site.Title -}}
+{{- else if and .Title (ne .Title site.Title) -}}
+  {{- $title = printf "%s | %s" .Title site.Title -}}
+{{- end -}}
+
+{{- $description := .Description -}}
+{{- if not $description -}}
+  {{- $description = .Summary -}}
+{{- end -}}
+{{- if not $description -}}
+  {{- $description = site.Params.meta.description -}}
+{{- end -}}
+
+{{- $ogType := "website" -}}
+{{- if .IsPage -}}
+  {{- $ogType = "article" -}}
+{{- end -}}
+
+{{- $url := .Permalink -}}
+
+{{- $image := "" -}}
+{{- if .Params.image -}}
+  {{- $image = .Params.image | absURL -}}
+{{- else -}}
+  {{- $featuredImg := .Resources.GetMatch "featured*" -}}
+  {{- if $featuredImg -}}
+    {{- $image = $featuredImg.Permalink -}}
+  {{- else -}}
+    {{- $coverImg := .Resources.GetMatch "*cover*" -}}
+    {{- if $coverImg -}}
+      {{- $image = $coverImg.Permalink -}}
+    {{- else if site.Params.meta.defaultImage -}}
+      {{- $image = site.Params.meta.defaultImage | absURL -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:type" content="{{ $ogType }}">
+<meta property="og:url" content="{{ $url }}">
+{{- if $image -}}
+<meta property="og:image" content="{{ $image }}">
+{{- end -}}
+{{- if site.Language.Lang -}}
+<meta property="og:locale" content="{{ site.Language.Lang }}">
+{{- end -}}
+{{- if .IsPage -}}
+  {{- with .PublishDate -}}
+<meta property="article:published_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">
+  {{- end -}}
+  {{- with .Lastmod -}}
+<meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">
+  {{- end -}}
+{{- end -}}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="{{ if $image }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+{{- if $image -}}
+<meta name="twitter:image" content="{{ $image }}">
+{{- end -}}
+{{- with site.Params.social.twitter.handle -}}
+<meta name="twitter:site" content="@{{ . }}">
+{{- end -}}

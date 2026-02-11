@@ -21,6 +21,7 @@
   {{- if eq (hugo.Environment) "development" -}}
     <meta name="robots" content="noindex, nofollow">
   {{- end -}}
+  {{ partial "seo-meta.html" . }}
   {{- $rssURL := "/index.xml" -}}
   {{- $rssTitle := .Site.Title -}}
   {{- if and (eq .Section "blog") .IsSection -}}
